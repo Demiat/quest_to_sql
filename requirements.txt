@@ -2,5 +2,6 @@ aiogram
 sqlalchemy
 alembic
 asyncpg
+pydantic
 pydantic-settings
 greenlet

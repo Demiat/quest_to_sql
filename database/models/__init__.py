@@ -1,3 +1,4 @@
-from database.models.video import Video, VideoSnapshot
+from .video import Video, VideoSnapshot
+from .pydantic import VideoDataPydantic # noqa
 
 __all__ = ("Video", "VideoSnapshot")

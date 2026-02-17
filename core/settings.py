@@ -28,8 +28,5 @@ class Settings(BaseSettings):
 
     db_settings: DBSettings = DBSettings()
 
-    model_config = SettingsConfigDict(
-        env_file=".env", env_file_encoding="utf8", extra="ignore")
-
 
 settings = Settings()
