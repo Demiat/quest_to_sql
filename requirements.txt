@@ -5,3 +5,5 @@ asyncpg
 pydantic
 pydantic-settings
 greenlet
+python-dotenv==1.1.0
+certifi==2025.1.31
