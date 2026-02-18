@@ -1,4 +1,4 @@
-ROM python:3.11.8-slim
+FROM python:3.11.8-slim
 
 WORKDIR /app
 

@@ -2,9 +2,11 @@ import asyncio
 import os
 
 from aiogram import Bot, Dispatcher, types
+from aiogram.filters import Command
 from dotenv import load_dotenv
 
 from bot.giga_chat import GigaChatAPI
+from bot.constants import WELCOME_TEXT
 
 load_dotenv()
 
@@ -13,6 +15,11 @@ COMMTOBOT_TOKEN = os.getenv("COMMTOBOT_TOKEN")
 bot = Bot(token=COMMTOBOT_TOKEN)
 dp = Dispatcher()
 giga = GigaChatAPI()
+
+
+@dp.message(Command(commands=['start']))
+async def cmd_start(message: types.Message):
+    await message.answer(WELCOME_TEXT)
 
 
 @dp.message()

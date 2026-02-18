@@ -108,12 +108,8 @@ class GigaChatAPI:
                 data = await response.json()
                 sql_query = data['choices'][0]['message']['content'].strip()
 
-                # Очистка ответа от возможных markdown
-                sql_query = sql_query.replace(
-                    '```sql', '').replace('```', '').strip()
-
                 return await self.get_answer_from_sql(sql_query)
-            elif response.status == HTTPStatus.UNAUTHORIZED:
+            elif response.status == HTTPStatus.UNAUTHORIZED:  # Токен протух
                 await self.get_access_token()
                 return await self.request_to_sql(message)  # Повторяем запрос
             else:

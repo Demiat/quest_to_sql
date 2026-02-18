@@ -9,7 +9,7 @@ services:
     volumes:
       - qts_db_data:/var/lib/postgresql/data
     ports:
-      - 127.0.0.1:2233:2233
+      - 127.0.0.1:5432:5432
     env_file: .env
     environment:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
@@ -26,7 +26,7 @@ services:
     command: >
       sh -c "
       alembic upgrade head &&
-      python /bot/bot.py
+      python -m bot.main
       "
     env_file: .env
     depends_on:
