@@ -40,19 +40,19 @@ class GigaChatAPI:
         self.token = None
         self.db = DBDependency()
 
-    async def _get_aiohttp_session(self):
+    async def _get_aiohttp_session(self) -> ClientSession:
         """Создает сессию, либо использует созданную ранее."""
         if not self.aiohttp_session:
             self.aiohttp_session = ClientSession(connector=self.connector)
         return self.aiohttp_session
 
-    async def get_answer_from_sql(self, answer_from_AI):
+    async def get_answer_from_sql(self, answer_from_AI) -> str:
         """Выполняет SQL запрос, полученный в виде текста от ИИ."""
         async with self.db.db_session() as db_session:
             result = await db_session.execute(text(answer_from_AI))
             return str(result.scalar())
 
-    async def get_access_token(self):
+    async def get_access_token(self) -> None:
         """Получает access token."""
         aiohttp_session = await self._get_aiohttp_session()
 
