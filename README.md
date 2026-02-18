@@ -27,9 +27,9 @@ DB_HOST=...
 DB_PORT=5432. 
 DB_ECHO=True или False. 
 
-COMMTOBOT_TOKEN=<Токен Вашего Бота>. 
-SBER_AUTH_TOKEN=<Токен от СБЕРА>. 
-RqUID=<уникальный идентификатор запроса для СБЕРА>
+COMMTOBOT_TOKEN=<Токен Вашего Бота>  
+SBER_AUTH_TOKEN=<Токен от СБЕРА>  
+RqUID=<уникальный идентификатор запроса для СБЕРА>  
 
 ---
 
