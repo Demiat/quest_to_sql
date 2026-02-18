@@ -22,9 +22,6 @@ RqUID = os.getenv('RqUID')
 
 GIGA_URL = 'https://gigachat.devices.sberbank.ru/api/v1/chat/completions'
 GIGA_AUTH_URL = 'https://ngw.devices.sberbank.ru:9443/api/v2/oauth'
-GIGA_FILES_URL = (
-    'https://gigachat.devices.sberbank.ru/api/v1/files/{file_uid}/content'
-)
 PAYLOAD = 'scope=GIGACHAT_API_PERS'
 HEADERS = {
     'Content-Type': 'application/x-www-form-urlencoded',
@@ -99,7 +96,7 @@ class GigaChatAPI:
             "repetition_penalty": 1.0
         }
 
-        async with aiohttp_session .post(
+        async with aiohttp_session.post(
             GIGA_URL,
             headers=headers,
             json=payload
@@ -118,9 +115,9 @@ class GigaChatAPI:
                 return None
 
     async def __aenter__(self):
-        """Создаем connector при входе в контекст (уже есть event loop)."""
         ssl_context = ssl.create_default_context(cafile=certifi.where())
         ssl_context.load_verify_locations('russian_trusted_root_ca.cer')
+        # Создаем connector при входе в контекст (уже есть event loop).
         self.connector = TCPConnector(ssl=ssl_context)
         return self
 
